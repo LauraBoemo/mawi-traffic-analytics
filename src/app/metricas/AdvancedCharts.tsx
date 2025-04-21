@@ -12,6 +12,7 @@ import AvgIPGPerIPChart from '../components/charts/avgIPGPerIPChart/AvgIPGPerIPC
 
 import { ChartBox } from '../components/ChartBox'
 import ChartContainer from '../components/ChartContainer'
+import TrafficHeatmap from '../components/charts/trafficHeatmap/TrafficHeatmap'
 
 
 export const AdvancedCharts = () => (
@@ -45,9 +46,9 @@ export const AdvancedCharts = () => (
     </ChartBox>
 
     {/* TODO: Descobrir um bom HeatMap */}
-    {/* <ChartBox title="Mapa de Calor: IPs x Tempo x Volume" description="Representação densa da atividade por IP ao longo do tempo.">
+    <ChartBox title="Mapa de Calor: IPs x Tempo x Volume" description="Representação densa da atividade por IP ao longo do tempo.">
       <TrafficHeatmap />
-    </ChartBox> */}
+    </ChartBox>
   </ChartContainer>
 )
 

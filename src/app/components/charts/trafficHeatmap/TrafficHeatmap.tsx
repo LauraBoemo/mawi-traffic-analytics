@@ -1,19 +1,19 @@
 'use client'
 
 import React from 'react'
-import HeatMap from 'react-heatmap-grid'
+// import HeatMap from 'react-heatmap-grid'
 
-const xLabels = ['0s', '1s', '2s', '3s', '4s']
-const yLabels = ['192.168.0.1', '10.0.0.1', '172.16.0.5']
-const data = [
-  [5, 10, 15, 20, 25],
-  [2, 3, 4, 8, 6],
-  [0, 0, 10, 0, 1]
-]
+// const xLabels = ['0s', '1s', '2s', '3s', '4s']
+// const yLabels = ['192.168.0.1', '10.0.0.1', '172.16.0.5']
+// const data = [
+//   [5, 10, 15, 20, 25],
+//   [2, 3, 4, 8, 6],
+//   [0, 0, 10, 0, 1]
+// ]
 
 const TrafficHeatmap = () => (
   <div style={{ fontSize: '12px', width: '100%' }}>
-    <HeatMap
+    {/* <HeatMap
       xLabels={xLabels}
       yLabels={yLabels}
       data={data}
@@ -22,7 +22,7 @@ const TrafficHeatmap = () => (
       yLabelWidth={100}
       squares
       height={30}
-    />
+    /> */}
   </div>
 )
 
