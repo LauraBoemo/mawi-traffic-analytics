@@ -41,6 +41,18 @@ a.secondary {
   min-width: 158px;
 }
 
+h5.accordion-title {
+  font-family: var(--font-geist-mono) !important;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+h4.accordion-subtitle {
+  font-family: var(--font-geist-mono) !important;
+  font-size: 14px;
+  font-weight: 100;
+}
+
 .header {
   gap: 5px;
   display: flex;

@@ -1,7 +1,7 @@
 import { CSSProperties } from "react"
 
 export const chartBoxBaseStyle: CSSProperties = {
-  backgroundColor: '#f0f0f0',
+  backgroundColor: 'red',
   padding: '1rem',
   borderRadius: '8px',
   boxShadow: '0 2px 6px rgba(0, 0, 0, 0.1)',

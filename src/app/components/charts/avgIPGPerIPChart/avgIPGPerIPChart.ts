@@ -9,6 +9,7 @@ export async function loadAvgIPGPerIP(
 ): Promise<Array<{ ip: string; avg: number; std: number }>> {
   try {
     const response = await fetch(url, { cache: "no-store" });
+    console.log(response);
     if (!response.ok) throw new Error("Erro ao carregar o arquivo.");
 
     const text = await response.text();

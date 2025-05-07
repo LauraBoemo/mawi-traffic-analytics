@@ -3,7 +3,7 @@ import { CSSProperties } from "react";
 const chartContainerStyle: CSSProperties = {
   display: 'flex',
   flexWrap: 'wrap',
-  gap: '2rem',
+  gap: '20px',
   justifyContent: 'center',
 }
 
