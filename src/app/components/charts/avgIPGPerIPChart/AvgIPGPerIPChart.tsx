@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { LineChart } from "@mui/x-charts";
-import { loadAvgIPGPerIP } from "./avgIPGPerIPChart";
+import { loadAvgIPGPerIP } from "./loadAvgIPGPerIPChart";
 import ChartLoad from "../../ChartLoad";
 
 const AvgIPGPerIPChart = () => {

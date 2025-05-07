@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { LineChart } from "@mui/x-charts";
-import { loadPacketSizeFrequency } from "./packetSizeFrequencyChart";
+import { loadPacketSizeFrequency } from "./loadPacketSizeFrequencyChart";
 import ChartLoad from "../../ChartLoad";
 
 const PacketSizeFrequencyChart = () => {

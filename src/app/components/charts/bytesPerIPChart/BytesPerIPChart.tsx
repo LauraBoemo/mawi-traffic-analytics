@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { BarChart } from "@mui/x-charts";
-import { loadBytesPerIP } from "./bytesPerIPChart";
+import { loadBytesPerIP } from "./loadBytesPerIPChart";
 import ChartLoad from "../../ChartLoad";
 
 const BytesPerIPChart = () => {

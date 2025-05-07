@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { BarChart } from "@mui/x-charts";
-import { loadIPEntropyByWindow } from "./ipEntropyChart";
+import { loadIPEntropyByWindow } from "./loadIpEntropyChart";
 import ChartLoad from "../../ChartLoad";
 
 const IPEntropyChart = () => {

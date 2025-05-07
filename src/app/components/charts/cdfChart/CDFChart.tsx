@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { LineChart } from "@mui/x-charts";
-import { loadPacketSizeCDF } from "./cdfChart";
+import { loadPacketSizeCDF } from "./loadCdfChart";
 import ChartLoad from "../../ChartLoad";
 
 const CDFChart = () => {

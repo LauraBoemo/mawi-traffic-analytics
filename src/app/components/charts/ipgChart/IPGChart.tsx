@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { LineChart } from "@mui/x-charts";
-import { loadAndProcessIPGData } from "./ipgChart";
+import { loadAndProcessIPGData } from "./loadIpgChart";
 import ChartLoad from "../../ChartLoad";
 
 const IPGChart = () => {

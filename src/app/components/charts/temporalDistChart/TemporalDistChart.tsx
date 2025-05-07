@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { LineChart } from "@mui/x-charts";
-import { loadTemporalDistributionByIP } from "./temporalDistChart";
+import { loadTemporalDistributionByIP } from "./loadTemporalDistChart";
 import ChartLoad from "../../ChartLoad";
 
 const TemporalDistChart = () => {

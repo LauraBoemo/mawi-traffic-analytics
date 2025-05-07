@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { BarChart } from "@mui/x-charts";
-import { loadPacketsPerWindow } from "./packetsWindowChart";
+import { loadPacketsPerWindow } from "./loadPacketsWindowChart";
 import ChartLoad from "../../ChartLoad";
 
 const PacketsWindowChart = () => {

@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { LineChart } from "@mui/x-charts";
-import { loadBurstnessData } from "./burstnessChart";
+import { loadBurstnessData } from "./loadBurstnessChart";
 import ChartLoad from "../../ChartLoad";
 
 const BurstnessChart = () => {

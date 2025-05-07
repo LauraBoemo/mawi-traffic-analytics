@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { BarChart } from "@mui/x-charts";
-import { loadAvgPacketSizeByIP } from "./avgPacketSizeChart";
+import { loadAvgPacketSizeByIP } from "./loadAvgPacketSizeChart";
 import ChartLoad from "../../ChartLoad";
 
 const AvgPacketSizeChart = () => {

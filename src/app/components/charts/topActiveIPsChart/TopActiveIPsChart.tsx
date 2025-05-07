@@ -1,6 +1,7 @@
+import React from "react";
 import { useEffect, useState } from "react";
 import { BarChart } from "@mui/x-charts";
-import { loadTopActiveIPs } from "./topActiveIPsChart";
+import { loadTopActiveIPs } from "./loadTopActiveIPsChart";
 import ChartLoad from "../../ChartLoad";
 
 const TopActiveIPsChart = () => {

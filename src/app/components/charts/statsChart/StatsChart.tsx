@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { BarChart } from "@mui/x-charts";
-import { loadIPGStats } from "./statsChart";
+import { loadIPGStats } from "./loadStatsChart";
 import ChartLoad from "../../ChartLoad";
 
 const StatsChart = () => {

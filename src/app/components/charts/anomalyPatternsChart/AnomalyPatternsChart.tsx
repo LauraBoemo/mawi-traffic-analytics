@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { LineChart } from "@mui/x-charts";
-import { loadAnomalyPatterns } from "./anomalyPatternsChart";
+import { loadAnomalyPatterns } from "./loadAnomalyPatternsChart";
 import ChartLoad from "../../ChartLoad";
 
 const AnomalyPatternsChart = () => {

@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { BarChart } from "@mui/x-charts";
-import { loadHorizontalScanData } from "./horizontalScanChart";
+import { loadHorizontalScanData } from "./loadHorizontalScanChart";
 import ChartLoad from "../../ChartLoad";
 
 const HorizontalScanChart = () => {

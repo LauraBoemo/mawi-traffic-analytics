@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { LineChart } from "@mui/x-charts";
-import { loadTrafficOverTime } from "./trafficOverTimeChart";
+import { loadTrafficOverTime } from "./loadTrafficOverTimeChart";
 import ChartLoad from "../../ChartLoad";
 
 const TrafficOverTimeChart = () => {
