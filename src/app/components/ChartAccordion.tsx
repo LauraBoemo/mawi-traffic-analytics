@@ -33,7 +33,7 @@ const AccordionItem: React.FC<AccordionItemProps> = ({
       disabled={disabled}
       sx={{
         width: "100% !important",
-        backgroundColor: "rgb(240, 240, 240)",
+        backgroundColor: "rgb(255, 255, 255)",
         boxShadow: "none",
         borderRadius: 2,
         "&:before": {
@@ -55,7 +55,7 @@ const AccordionItem: React.FC<AccordionItemProps> = ({
               alignItems="center"
               fontWeight="fontWeightMedium"
               sx={{
-                fontSize: "16px",
+                fontSize: "14px",
                 fontFamily: 'var(--font-geist-mono)',
               }}
             >

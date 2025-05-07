@@ -13,6 +13,7 @@ import TrafficHeatmap from '../components/charts/trafficHeatmap/TrafficHeatmap'
 
 import ChartContainer from '../components/ChartContainer'
 import ChartAccordion from '../components/ChartAccordion'
+import { ChartBox } from '../components/ChartBox'
 
 export const AdvancedCharts = () => {
   const [expanded, setExpanded] = useState<Record<string, boolean>>({})
@@ -24,77 +25,117 @@ export const AdvancedCharts = () => {
 
   return (
     <ChartContainer>
-      <ChartAccordion
+      <ChartBox
+        fullWidth
         title="Top 10 IPs Mais Ativos"
-        subTitle="Exibe os IPs que mais enviaram pacotes, útil para identificar os principais emissores de tráfego."
-        expanded={!!expanded['top-active-ips']}
-        onChange={handleChange('top-active-ips')}
+        description="Exibe os IPs que mais enviaram pacotes, útil para identificar os principais emissores de tráfego."
       >
-        <TopActiveIPsChart />
-      </ChartAccordion>
+        <ChartAccordion
+          title="Gerar Gráfico"
+          expanded={!!expanded['top-active-ips']}
+          onChange={handleChange('top-active-ips')}
+        >
+          <TopActiveIPsChart />
+        </ChartAccordion>
+      </ChartBox>
 
-      <ChartAccordion
+      <ChartBox
+        fullWidth
         title="IPG Médio e Desvio Padrão por IP"
-        subTitle="Mede a regularidade ou dispersão dos envios de pacotes por IP."
-        expanded={!!expanded['avg-ipg']}
-        onChange={handleChange('avg-ipg')}
+        description="Mede a regularidade ou dispersão dos envios de pacotes por IP."
       >
-        <AvgIPGPerIPChart />
-      </ChartAccordion>
+        <ChartAccordion
+          title="Gerar Gráfico"
+          expanded={!!expanded['avg-ipg']}
+          onChange={handleChange('avg-ipg')}
+        >
+          <AvgIPGPerIPChart />
+        </ChartAccordion>
+      </ChartBox>
 
-      <ChartAccordion
+      <ChartBox
+        fullWidth
         title="Entropia da Distribuição de IPs"
-        subTitle="Calcula a aleatoriedade ou previsibilidade dos IPs de origem."
-        expanded={!!expanded['entropy']}
-        onChange={handleChange('entropy')}
+        description="Calcula a aleatoriedade ou previsibilidade dos IPs de origem."
       >
-        <IPEntropyChart />
-      </ChartAccordion>
+        <ChartAccordion
+          title="Gerar Gráfico"
+          expanded={!!expanded['entropy']}
+          onChange={handleChange('entropy')}
+        >
+          <IPEntropyChart />
+        </ChartAccordion>
+      </ChartBox>
 
-      <ChartAccordion
+      <ChartBox
+        fullWidth
         title="Volume Total de Bytes por IP"
-        subTitle="Quantifica a quantidade de dados transmitidos por cada IP."
-        expanded={!!expanded['bytes-per-ip']}
-        onChange={handleChange('bytes-per-ip')}
+        description="Quantifica a quantidade de dados transmitidos por cada IP."
       >
-        <BytesPerIPChart />
-      </ChartAccordion>
+        <ChartAccordion
+          title="Gerar Gráfico"
+          expanded={!!expanded['bytes-per-ip']}
+          onChange={handleChange('bytes-per-ip')}
+        >
+          <BytesPerIPChart />
+        </ChartAccordion>
+      </ChartBox>
 
-      <ChartAccordion
+      <ChartBox
+        fullWidth
         title="Variação de Tráfego no Tempo"
-        subTitle="Mostra flutuações do tráfego ao longo do tempo em janelas regulares."
-        expanded={!!expanded['traffic-over-time']}
-        onChange={handleChange('traffic-over-time')}
+        description="Mostra flutuações do tráfego ao longo do tempo em janelas regulares."
       >
-        <TrafficOverTimeChart />
-      </ChartAccordion>
+        <ChartAccordion
+          title="Gerar Gráfico"
+          expanded={!!expanded['traffic-over-time']}
+          onChange={handleChange('traffic-over-time')}
+        >
+          <TrafficOverTimeChart />
+        </ChartAccordion>
+      </ChartBox>
 
-      <ChartAccordion
+      <ChartBox
+        fullWidth
         title="Relação entre Tamanho dos Pacotes e Frequência"
-        subTitle="Avalia padrões de envio em função do tamanho dos pacotes."
-        expanded={!!expanded['packet-size-frequency']}
-        onChange={handleChange('packet-size-frequency')}
+        description="Avalia padrões de envio em função do tamanho dos pacotes."
       >
-        <PacketSizeFrequencyChart />
-      </ChartAccordion>
+        <ChartAccordion
+          title="Gerar Gráfico"
+          expanded={!!expanded['packet-size-frequency']}
+          onChange={handleChange('packet-size-frequency')}
+        >
+          <PacketSizeFrequencyChart />
+        </ChartAccordion>
+      </ChartBox>
 
-      <ChartAccordion
+      <ChartBox
+        fullWidth
         title="Padrões Anômalos de Comunicação"
-        subTitle="Destaca comportamentos atípicos, como bursts ou longos períodos sem tráfego."
-        expanded={!!expanded['anomalies']}
-        onChange={handleChange('anomalies')}
+        description="Destaca comportamentos atípicos, como bursts ou longos períodos sem tráfego."
       >
-        <AnomalyPatternsChart />
-      </ChartAccordion>
+        <ChartAccordion
+          title="Gerar Gráfico"
+          expanded={!!expanded['anomalies']}
+          onChange={handleChange('anomalies')}
+        >
+          <AnomalyPatternsChart />
+        </ChartAccordion>
+      </ChartBox>
 
-      <ChartAccordion
+      <ChartBox
+        fullWidth
         title="Mapa de Calor: IPs x Tempo x Volume"
-        subTitle="Representação densa da atividade por IP ao longo do tempo."
-        expanded={!!expanded['heatmap']}
-        onChange={handleChange('heatmap')}
+        description="Representação densa da atividade por IP ao longo do tempo."
       >
-        <TrafficHeatmap />
-      </ChartAccordion>
+        <ChartAccordion
+          title="Gerar Gráfico"
+          expanded={!!expanded['heatmap']}
+          onChange={handleChange('heatmap')}
+        >
+          <TrafficHeatmap />
+        </ChartAccordion>
+      </ChartBox>
     </ChartContainer>
   )
 }

@@ -27,13 +27,13 @@ export const ChartBox = ({ title, description, children, fullWidth = false }: Ch
 
   return (
     <div style={boxStyle}>
-      <h3 style={{ textAlign: 'center', fontSize: '1rem', marginBottom: '0.5rem' }}>{title}</h3>
+      <h3 style={{ textAlign: 'center', fontSize: '1rem', marginBottom: '0.25rem' }}>{title}</h3>
       {description && (
         <p style={{ fontSize: '0.85rem', textAlign: 'center', margin: '0 0 0.5rem 0' }}>
           {description}
         </p>
       )}
-      <div style={{ width: '100%' }}>{children}</div>
+      <div style={{ width: '100%', marginTop: "5px" }}>{children}</div>
     </div>
   )
 }
