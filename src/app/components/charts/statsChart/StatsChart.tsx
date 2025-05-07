@@ -1,17 +1,31 @@
-import { BarChart } from "@mui/x-charts"
+import { useEffect, useState } from "react";
+import { BarChart } from "@mui/x-charts";
+import { loadIPGStats } from "./statsChart";
+import ChartLoad from "../../ChartLoad";
 
-const stats = [
-  { metric: 'Skewness', value: 1.8 },
-  { metric: 'Kurtosis', value: 3.2 },
-]
+const StatsChart = () => {
+  const [data, setData] = useState<{ metric: string; value: number }[]>([]);
+  const [loading, setLoading] = useState(true);
 
-const StatsChart = () => (
-  <BarChart
-    dataset={stats}
-    xAxis={[{ dataKey: 'metric', scaleType: 'band' }]}
-    series={[{ dataKey: 'value', label: 'Valor' }]}
-    height={300}
-  />
-)
+  useEffect(() => {
+    setLoading(true);
+    loadIPGStats()
+      .then(setData)
+      .finally(() => setLoading(false));
+  }, []);
+
+  if (loading) {
+    return <ChartLoad />;
+  }
+
+  return (
+    <BarChart
+      dataset={data}
+      xAxis={[{ dataKey: "metric", scaleType: "band" }]}
+      series={[{ dataKey: "value", label: "Valor" }]}
+      height={300}
+    />
+  );
+};
 
 export default StatsChart;

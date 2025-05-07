@@ -1,23 +1,32 @@
-import React from 'react';
-import { LineChart } from '@mui/x-charts';
+import { useEffect, useState } from "react";
+import { LineChart } from "@mui/x-charts";
+import { loadAvgIPGPerIP } from "./avgIPGPerIPChart";
+import ChartLoad from "../../ChartLoad";
 
-const data = [
-  { ip: '192.168.0.1', avg: 20, std: 5 },
-  { ip: '10.0.0.1', avg: 25, std: 6 },
-  { ip: '172.16.0.5', avg: 18, std: 4 },
-  { ip: '192.168.1.7', avg: 30, std: 7 }
-];
+const AvgIPGPerIPChart = () => {
+  const [data, setData] = useState<{ ip: string; avg: number; std: number }[]>([]);
+  const [loading, setLoading] = useState(true);
 
-const AvgIPGPerIPChart = () => (
-  <LineChart
-    dataset={data}
-    xAxis={[{ dataKey: 'ip', label: 'IP', scaleType: 'band' }]}
-    series={[
-      { dataKey: 'avg', label: 'IPG Médio' },
-      { dataKey: 'std', label: 'Desvio Padrão' }
-    ]}
-    height={250}
-  />
-);
+  useEffect(() => {
+    setLoading(true);
+    loadAvgIPGPerIP()
+      .then(setData)
+      .finally(() => setLoading(false));
+  }, []);
+
+  if (loading) return <ChartLoad />;
+
+  return (
+    <LineChart
+      dataset={data}
+      xAxis={[{ dataKey: "ip", label: "IP", scaleType: "band" }]}
+      series={[
+        { dataKey: "avg", label: "IPG Médio" },
+        { dataKey: "std", label: "Desvio Padrão" },
+      ]}
+      height={250}
+    />
+  );
+};
 
 export default AvgIPGPerIPChart;

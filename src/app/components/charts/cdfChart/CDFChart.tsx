@@ -1,20 +1,31 @@
-import { LineChart } from "@mui/x-charts"
+import { useEffect, useState } from "react";
+import { LineChart } from "@mui/x-charts";
+import { loadPacketSizeCDF } from "./cdfChart";
+import ChartLoad from "../../ChartLoad";
 
-const packetSizeCDF = [
-  { size: 100, cdf: 0.1 },
-  { size: 300, cdf: 0.5 },
-  { size: 500, cdf: 0.75 },
-  { size: 700, cdf: 0.9 },
-  { size: 1000, cdf: 1.0 },
-]
+const CDFChart = () => {
+  const [data, setData] = useState<{ size: number; cdf: number }[]>([]);
+  const [loading, setLoading] = useState(true);
 
-const CDFChart = () => (
-  <LineChart
-    dataset={packetSizeCDF}
-    xAxis={[{ dataKey: 'size', label: 'Tamanho (bytes)' }]}
-    series={[{ dataKey: 'cdf', label: 'CDF' }]}
-    height={300}
-  />
-)
+  useEffect(() => {
+    setLoading(true);
+    loadPacketSizeCDF()
+      .then(setData)
+      .finally(() => setLoading(false));
+  }, []);
 
-export default CDFChart; 
+  if (loading) {
+    return <ChartLoad />;
+  }
+
+  return (
+    <LineChart
+      dataset={data}
+      xAxis={[{ dataKey: "size", label: "Tamanho (bytes)" }]}
+      series={[{ dataKey: "cdf", label: "CDF" }]}
+      height={300}
+    />
+  );
+};
+
+export default CDFChart;

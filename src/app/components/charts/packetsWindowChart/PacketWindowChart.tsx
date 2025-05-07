@@ -1,18 +1,31 @@
-import { BarChart } from "@mui/x-charts"
+import { useEffect, useState } from "react";
+import { BarChart } from "@mui/x-charts";
+import { loadPacketsPerWindow } from "./packetsWindowChart";
+import ChartLoad from "../../ChartLoad";
 
-const packetsPerWindow = [
-  { window: '00:00-00:10', count: 150 },
-  { window: '00:10-00:20', count: 230 },
-  { window: '00:20-00:30', count: 180 },
-]
+const PacketsWindowChart = () => {
+  const [data, setData] = useState<{ window: string; count: number }[]>([]);
+  const [loading, setLoading] = useState(true);
 
-export const PacketsWindowChart = () => (
-  <BarChart
-    dataset={packetsPerWindow}
-    xAxis={[{ dataKey: 'window', label: 'Janela', scaleType: 'band' }]}
-    series={[{ dataKey: 'count', label: 'Pacotes' }]}
-    height={300}
-  />
-)
+  useEffect(() => {
+    setLoading(true);
+    loadPacketsPerWindow(10)
+      .then(setData)
+      .finally(() => setLoading(false));
+  }, []);
+
+  if (loading) {
+    return <ChartLoad />;
+  }
+
+  return (
+    <BarChart
+      dataset={data}
+      xAxis={[{ dataKey: "window", label: "Janela", scaleType: "band" }]}
+      series={[{ dataKey: "count", label: "Pacotes" }]}
+      height={300}
+    />
+  );
+};
 
 export default PacketsWindowChart;

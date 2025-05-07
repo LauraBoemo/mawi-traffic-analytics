@@ -1,21 +1,29 @@
-import React from 'react';
-import { LineChart } from '@mui/x-charts';
+import { useEffect, useState } from "react";
+import { LineChart } from "@mui/x-charts";
+import { loadPacketSizeFrequency } from "./packetSizeFrequencyChart";
+import ChartLoad from "../../ChartLoad";
 
-const data = [
-  { size: 64, frequency: 300 },
-  { size: 128, frequency: 450 },
-  { size: 256, frequency: 400 },
-  { size: 512, frequency: 300 },
-  { size: 1024, frequency: 150 }
-];
+const PacketSizeFrequencyChart = () => {
+  const [data, setData] = useState<{ size: number; frequency: number }[]>([]);
+  const [loading, setLoading] = useState(true);
 
-const PacketSizeFrequencyChart = () => (
-  <LineChart
-    dataset={data}
-    xAxis={[{ dataKey: 'size', label: 'Tamanho do Pacote (bytes)' }]}
-    series={[{ dataKey: 'frequency', label: 'Frequência' }]}
-    height={250}
-  />
-);
+  useEffect(() => {
+    setLoading(true);
+    loadPacketSizeFrequency()
+      .then(setData)
+      .finally(() => setLoading(false));
+  }, []);
+
+  if (loading) return <ChartLoad />;
+
+  return (
+    <LineChart
+      dataset={data}
+      xAxis={[{ dataKey: "size", label: "Tamanho do Pacote (bytes)" }]}
+      series={[{ dataKey: "frequency", label: "Frequência" }]}
+      height={250}
+    />
+  );
+};
 
 export default PacketSizeFrequencyChart;

@@ -1,19 +1,29 @@
-import React from 'react';
-import { BarChart } from '@mui/x-charts';
+import { useEffect, useState } from "react";
+import { BarChart } from "@mui/x-charts";
+import { loadBytesPerIP } from "./bytesPerIPChart";
+import ChartLoad from "../../ChartLoad";
 
-const data = [
-  { ip: '192.168.0.1', bytes: 102400 },
-  { ip: '10.0.0.1', bytes: 87500 },
-  { ip: '172.16.0.5', bytes: 93200 }
-];
+const BytesPerIPChart = () => {
+  const [data, setData] = useState<{ ip: string; bytes: number }[]>([]);
+  const [loading, setLoading] = useState(true);
 
-const BytesPerIPChart = () => (
-  <BarChart
-    dataset={data}
-    xAxis={[{ dataKey: 'ip', label: 'IP', scaleType: 'band' }]}
-    series={[{ dataKey: 'bytes', label: 'Bytes' }]}
-    height={250}
-  />
-);
+  useEffect(() => {
+    setLoading(true);
+    loadBytesPerIP()
+      .then(setData)
+      .finally(() => setLoading(false));
+  }, []);
+
+  if (loading) return <ChartLoad />;
+
+  return (
+    <BarChart
+      dataset={data}
+      xAxis={[{ dataKey: "ip", label: "IP", scaleType: "band" }]}
+      series={[{ dataKey: "bytes", label: "Bytes" }]}
+      height={250}
+    />
+  );
+};
 
 export default BytesPerIPChart;

@@ -1,19 +1,29 @@
-import React from 'react';
-import { BarChart } from '@mui/x-charts';
+import { useEffect, useState } from "react";
+import { BarChart } from "@mui/x-charts";
+import { loadIPEntropyByWindow } from "./ipEntropyChart";
+import ChartLoad from "../../ChartLoad";
 
-const data = [
-  { window: '00:00-00:10', entropy: 2.3 },
-  { window: '00:10-00:20', entropy: 3.1 },
-  { window: '00:20-00:30', entropy: 2.8 }
-];
+const IPEntropyChart = () => {
+  const [data, setData] = useState<{ window: string; entropy: number }[]>([]);
+  const [loading, setLoading] = useState(true);
 
-const IPEntropyChart = () => (
-  <BarChart
-    dataset={data}
-    xAxis={[{ dataKey: 'window', label: 'Janela', scaleType: 'band' }]}
-    series={[{ dataKey: 'entropy', label: 'Entropia' }]}
-    height={250}
-  />
-);
+  useEffect(() => {
+    setLoading(true);
+    loadIPEntropyByWindow()
+      .then(setData)
+      .finally(() => setLoading(false));
+  }, []);
+
+  if (loading) return <ChartLoad />;
+
+  return (
+    <BarChart
+      dataset={data}
+      xAxis={[{ dataKey: "window", label: "Janela", scaleType: "band" }]}
+      series={[{ dataKey: "entropy", label: "Entropia" }]}
+      height={250}
+    />
+  );
+};
 
 export default IPEntropyChart;

@@ -1,21 +1,31 @@
-import { LineChart } from "@mui/x-charts"
+import { useState, useEffect } from "react";
+import { LineChart } from "@mui/x-charts";
+import { loadAndProcessIPGData } from "./ipgChart";
+import ChartLoad from "../../ChartLoad";
 
-const ipgData = [
-  { x: 0, y: 20 },
-  { x: 1, y: 10 },
-  { x: 2, y: 15 },
-  { x: 3, y: 5 },
-  { x: 4, y: 8 },
-  { x: 5, y: 12 },
-]
+const IPGChart = () => {
+  const [data, setData] = useState<{ x: number; y: number }[]>([]);
+  const [loading, setLoading] = useState(true);
 
-const IPGChart = () => (
-  <LineChart
-    dataset={ipgData}
-    xAxis={[{ dataKey: 'x', label: 'Pacote' }]}
-    series={[{ dataKey: 'y', label: 'IPG (ms)' }]}
-    height={300}
-  />
-)
- 
+  useEffect(() => {
+    setLoading(true);
+    loadAndProcessIPGData()
+      .then(setData)
+      .finally(() => setLoading(false));
+  }, []);
+
+  if (loading) {
+    return <ChartLoad />;
+  }
+  
+  return (
+    <LineChart
+      dataset={data}
+      xAxis={[{ dataKey: "x", label: "Pacote" }]}
+      series={[{ dataKey: "y", label: "IPG (s)" }]}
+      height={300}
+    />
+  );
+};
+
 export default IPGChart;

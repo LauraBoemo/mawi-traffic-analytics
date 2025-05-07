@@ -1,20 +1,31 @@
+import { useEffect, useState } from "react";
 import { LineChart } from "@mui/x-charts";
+import { loadBurstnessData } from "./burstnessChart";
+import ChartLoad from "../../ChartLoad";
 
-const burstness = [
-  { time: 0, packets: 2 },
-  { time: 1, packets: 3 },
-  { time: 2, packets: 30 },
-  { time: 3, packets: 1 },
-  { time: 4, packets: 5 },
-]
+const BurstnessChart = () => {
+  const [data, setData] = useState<{ time: number; packets: number }[]>([]);
+  const [loading, setLoading] = useState(true);
 
-const BurstnessChart = () => (
-  <LineChart
-    dataset={burstness}
-    xAxis={[{ dataKey: 'time', label: 'Tempo' }]}
-    series={[{ dataKey: 'packets', label: 'Pacotes' }]}
-    height={300}
-  />
-)
+  useEffect(() => {
+    setLoading(true);
+    loadBurstnessData()
+      .then(setData)
+      .finally(() => setLoading(false));
+  }, []);
+
+  if (loading) {
+    return <ChartLoad />;
+  }
+
+  return (
+    <LineChart
+      dataset={data}
+      xAxis={[{ dataKey: "time", label: "Tempo" }]}
+      series={[{ dataKey: "packets", label: "Pacotes" }]}
+      height={300}
+    />
+  );
+};
 
 export default BurstnessChart;

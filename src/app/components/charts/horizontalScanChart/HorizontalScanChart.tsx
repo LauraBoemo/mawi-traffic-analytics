@@ -1,18 +1,31 @@
-import { BarChart } from "@mui/x-charts"
+import { useEffect, useState } from "react";
+import { BarChart } from "@mui/x-charts";
+import { loadHorizontalScanData } from "./horizontalScanChart";
+import ChartLoad from "../../ChartLoad";
 
-const horizontalScan = [
-  { ip: '192.168.0.1', destinations: 2 },
-  { ip: '10.0.0.5', destinations: 200 },
-  { ip: '172.16.1.10', destinations: 1 },
-]
+const HorizontalScanChart = () => {
+  const [data, setData] = useState<{ ip: string; destinations: number }[]>([]);
+  const [loading, setLoading] = useState(true);
 
-const HorizontalScanChart = () => (
-  <BarChart
-    dataset={horizontalScan}
-    xAxis={[{ dataKey: 'ip', label: 'IP', scaleType: 'band' }]}
-    series={[{ dataKey: 'destinations', label: 'Destinos únicos' }]}
-    height={300}
-  />
-)
+  useEffect(() => {
+    setLoading(true);
+    loadHorizontalScanData()
+      .then(setData)
+      .finally(() => setLoading(false));
+  }, []);
+
+  if (loading) {
+    return <ChartLoad />;
+  }
+
+  return (
+    <BarChart
+      dataset={data}
+      xAxis={[{ dataKey: "ip", label: "IP", scaleType: "band" }]}
+      series={[{ dataKey: "destinations", label: "Destinos únicos" }]}
+      height={300}
+    />
+  );
+};
 
 export default HorizontalScanChart;
