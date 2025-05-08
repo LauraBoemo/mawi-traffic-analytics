@@ -15,7 +15,7 @@ export const chartBoxBaseStyle: CSSProperties = {
 type ChartBoxProps = {
   title: string
   description?: string
-  children: React.ReactNode
+  children?: React.ReactNode
   fullWidth?: boolean
 }
 

@@ -22,7 +22,6 @@ export default function DescricoesGerais() {
       <ChartBox
         title="1. Conheça o Projeto"
         description="Este projeto realiza análises exploratórias sobre dados de tráfego de rede provenientes do repositório MAWI, permitindo a visualização de padrões, anomalias e métricas estatísticas extraídas de pacotes capturados. Feito para a cadeira de Redes de Computadores, UFSM, 2025/1."
-        children={<></>}
       />
       <ChartBox title={"2. Defina os Parâmetros"} description={"Caso queira alterar os valores padrão, insira os dados desejados abaixo. Eles afetarão todas as tabelas deste site!"}>
         <ChartAccordion
@@ -116,7 +115,6 @@ export default function DescricoesGerais() {
       <ChartBox
         title="3. Visualize os Dados"
         description="Para explorar os dados processados, acesse as abas 'Dados Não-Triviais' ou 'Métricas'. Nessas seções, você encontrará os gráficos gerados pelo projeto, acompanhados de suas descrições e do código responsável por cada visualização."
-        children={<></>}
       />
 
     </Stack>
