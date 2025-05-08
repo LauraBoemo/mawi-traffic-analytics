@@ -15,13 +15,13 @@ import ChartAccordion from '../components/ChartAccordion'
 import { ChartBox } from '../components/ChartBox'
 import ChartFunctionDescription from '../components/ChartFunctionDescription'
 
-import { loadBytesPerIP } from '../components/charts/bytesPerIPChart/loadBytesPerIPChart'
-import { loadTrafficOverTime } from '../components/charts/trafficOverTimeChart/loadTrafficOverTimeChart'
-import { loadPacketSizeFrequency } from '../components/charts/packetSizeFrequencyChart/loadPacketSizeFrequencyChart'
-import { loadAvgIPGPerIP } from '../components/charts/avgIPGPerIPChart/loadAvgIPGPerIPChart'
-import { loadTopActiveIPs } from '../components/charts/topActiveIPsChart/loadTopActiveIPsChart'
-import { loadIPEntropyByWindow } from '../components/charts/ipEntropyChart/loadIpEntropyChart'
-import { loadAnomalyPatterns } from '../components/charts/anomalyPatternsChart/loadAnomalyPatternsChart'
+import { code as loadBytesPerIP } from '../components/charts/bytesPerIPChart/loadBytesPerIPChart.code'
+import { code as loadTrafficOverTime } from '../components/charts/trafficOverTimeChart/loadTrafficOverTimeChart.code'
+import { code as loadPacketSizeFrequency } from '../components/charts/packetSizeFrequencyChart/loadPacketSizeFrequencyChart.code'
+import { code as loadAvgIPGPerIP } from '../components/charts/avgIPGPerIPChart/loadAvgIPGPerIPChart.code'
+import { code as loadTopActiveIPs } from '../components/charts/topActiveIPsChart/loadTopActiveIPsChart.code'
+import { code as loadIPEntropyByWindow } from '../components/charts/ipEntropyChart/loadIpEntropyChart.code'
+import { code as loadAnomalyPatterns } from '../components/charts/anomalyPatternsChart/loadAnomalyPatternsChart.code'
 
 export const AdvancedCharts = () => {
   const [expanded, setExpanded] = useState<Record<string, boolean>>({})

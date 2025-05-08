@@ -1,7 +1,8 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  /* config options here */
-};
+  test: /\.code\.ts$/,
+  use: 'raw-loader'
+}
 
 export default nextConfig;

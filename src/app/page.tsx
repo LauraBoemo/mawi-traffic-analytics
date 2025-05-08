@@ -1,4 +1,4 @@
-import styles from "../page.module.css";
+import styles from "./page.module.css";
 import Descriptions from "./descricoes/Descriptions";
 
 export default function DescricoesGerais() {

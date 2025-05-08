@@ -16,14 +16,14 @@ import ChartAccordion from '../components/ChartAccordion'
 import { ChartBox } from '../components/ChartBox'
 import ChartFunctionDescription from '../components/ChartFunctionDescription'
 
-import { loadAndProcessIPGData } from '../components/charts/ipgChart/loadIpgChart'
-import { loadAvgPacketSizeByIP } from '../components/charts/avgPacketSizeChart/loadAvgPacketSizeChart'
-import { loadPacketsPerWindow } from '../components/charts/packetsWindowChart/loadPacketsWindowChart'
-import { loadTemporalDistributionByIP } from '../components/charts/temporalDistChart/loadTemporalDistChart'
-import { loadBurstnessData } from '../components/charts/burstnessChart/loadBurstnessChart'
-import { loadPacketSizeCDF } from '../components/charts/cdfChart/loadCdfChart'
-import { loadIPGStats } from '../components/charts/statsChart/loadStatsChart'
-import { loadHorizontalScanData } from '../components/charts/horizontalScanChart/loadHorizontalScanChart'
+import { code as loadAndProcessIPGData } from '../components/charts/ipgChart/loadIpgChart.code'
+import { code as loadAvgPacketSizeByIP } from '../components/charts/avgPacketSizeChart/loadAvgPacketSizeChart.code'
+import { code as loadPacketsPerWindow } from '../components/charts/packetsWindowChart/loadPacketsWindowChart.code'
+import { code as loadTemporalDistributionByIP } from '../components/charts/temporalDistChart/loadTemporalDistChart.code'
+import { code as loadBurstnessData } from '../components/charts/burstnessChart/loadBurstnessChart.code'
+import { code as loadPacketSizeCDF } from '../components/charts/cdfChart/loadCdfChart.code'
+import { code as loadIPGStats } from '../components/charts/statsChart/loadStatsChart.code'
+import { code as loadHorizontalScanData } from '../components/charts/horizontalScanChart/loadHorizontalScanChart.code'
 
 export const NonTrivialCharts = () => {
   const [expanded, setExpanded] = useState<Record<string, boolean>>({})
