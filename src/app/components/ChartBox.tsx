@@ -19,7 +19,7 @@ type ChartBoxProps = {
   fullWidth?: boolean
 }
 
-export const ChartBox = ({ title, description, children, fullWidth = false }: ChartBoxProps) => {
+export const ChartBox = ({ title, description, children, fullWidth = true }: ChartBoxProps) => {
   const boxStyle: CSSProperties = {
     ...chartBoxBaseStyle,
     width: fullWidth ? '100%' : '48.6%'
@@ -33,7 +33,7 @@ export const ChartBox = ({ title, description, children, fullWidth = false }: Ch
           {description}
         </p>
       )}
-      <div style={{ width: '100%', marginTop: "5px" }}>{children}</div>
+      <div style={{ display: "flex", flexDirection: "column", width: '100%', marginTop: "5px", gap: "5px" }}>{children}</div>
     </div>
   )
 }
