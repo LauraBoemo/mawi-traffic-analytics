@@ -1,21 +1,25 @@
-import { useEffect, useState } from "react";
-import { LineChart } from "@mui/x-charts";
-import { loadBurstnessData } from "./loadBurstnessChart";
-import ChartLoad from "../../ChartLoad";
+'use client'
+
+import { useEffect, useState } from "react"
+import { LineChart } from "@mui/x-charts"
+import { loadBurstnessData } from "./loadBurstnessChart"
+import ChartLoad from "../../ChartLoad"
+import { useMainValues } from "@/app/contexts/MainValuesContext"
 
 const BurstnessChart = () => {
-  const [data, setData] = useState<{ time: number; packets: number }[]>([]);
-  const [loading, setLoading] = useState(true);
+  const [data, setData] = useState<{ time: number; packets: number }[]>([])
+  const [loading, setLoading] = useState(true)
+  const { values } = useMainValues()
 
   useEffect(() => {
-    setLoading(true);
-    loadBurstnessData()
+    setLoading(true)
+    loadBurstnessData(values.url, values.binSize, values.maxPoints)
       .then(setData)
-      .finally(() => setLoading(false));
-  }, []);
+      .finally(() => setLoading(false))
+  }, [values.url, values.binSize, values.maxPoints])
 
   if (loading) {
-    return <ChartLoad />;
+    return <ChartLoad />
   }
 
   return (
@@ -25,7 +29,7 @@ const BurstnessChart = () => {
       series={[{ dataKey: "packets", label: "Pacotes" }]}
       height={300}
     />
-  );
-};
+  )
+}
 
-export default BurstnessChart;
+export default BurstnessChart

@@ -1,8 +1,9 @@
 import { csvParse } from "d3-dsv";
-import { url, maxPoints } from "../mainValues";
 
 export async function loadPacketsPerWindow(
-  binSize = 10 // segundos por janela
+  url: string,
+  binSize = 10,
+  maxPoints = 10000
 ): Promise<Array<{ window: string; count: number }>> {
   /**
    * Agrupa pacotes em janelas de tempo fixas e conta quantos pacotes caem em cada janela.

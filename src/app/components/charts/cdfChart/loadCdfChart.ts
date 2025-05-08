@@ -1,7 +1,9 @@
 import { csvParse } from "d3-dsv";
-import { url, maxPoints } from "../mainValues";
 
-export async function loadPacketSizeCDF(): Promise<Array<{ size: number; cdf: number }>> {
+export async function loadPacketSizeCDF(
+  url: string,
+  maxPoints = 10000
+): Promise<Array<{ size: number; cdf: number }>> {
   /**
    * Calcula a Função de Distribuição Acumulada (CDF) do tamanho dos pacotes.
    * A CDF representa a proporção acumulada de pacotes até um determinado tamanho.

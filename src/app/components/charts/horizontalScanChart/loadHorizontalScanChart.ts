@@ -1,7 +1,7 @@
 import { csvParse } from "d3-dsv";
-import { url } from "../mainValues";
 
 export async function loadHorizontalScanData(
+  url: string,
   maxPackets = 10000
 ): Promise<Array<{ ip: string; destinations: number }>> {
   /**

@@ -1,10 +1,14 @@
 import { csvParse } from "d3-dsv";
-import { url } from "../mainValues";
 
-export async function loadAnomalyPatterns(
-  binSize = 1, // segundos
-  maxPackets = 10000
-): Promise<Array<{ time: number; packets: number }>> {
+export async function loadAnomalyPatterns({
+  url,
+  binSize = 1,
+  maxPackets = 10000,
+}: {
+  url: string
+  binSize?: number
+  maxPackets?: number
+}): Promise<Array<{ time: number; packets: number }>> {
   /**
    * Gera a quantidade de pacotes por janela de tempo para observar padrões anômalos.
    * 

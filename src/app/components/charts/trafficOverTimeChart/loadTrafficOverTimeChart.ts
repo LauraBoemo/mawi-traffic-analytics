@@ -1,7 +1,7 @@
 import { csvParse } from "d3-dsv";
-import { url } from "../mainValues";
 
 export async function loadTrafficOverTime(
+  url: string,
   binSize = 1, // segundos
   maxPackets = 10000
 ): Promise<Array<{ time: number; bytes: number }>> {

@@ -1,7 +1,10 @@
 import { csvParse } from "d3-dsv";
-import { binSize, maxPackets, url } from "../mainValues";
 
-export async function loadTemporalDistributionByIP(): Promise<Array<Record<string, number>>> {
+export async function loadTemporalDistributionByIP(
+  url: string,
+  binSize: number,
+  maxPackets: number
+): Promise<Array<Record<string, number>>> {
   /**
    * Agrupa pacotes em janelas de tempo por IP de origem,
    * normalizando os timestamps (segundos ou microssegundos) e aplicando rebase temporal.

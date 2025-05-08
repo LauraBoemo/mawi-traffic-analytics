@@ -1,7 +1,7 @@
 import { csvParse } from "d3-dsv";
-import { url } from "../mainValues";
 
 export async function loadTopActiveIPs(
+  url: string,
   maxPackets = 10000,
   topN = 10
 ): Promise<Array<{ ip: string; packets: number }>> {

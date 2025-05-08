@@ -1,7 +1,7 @@
 import { csvParse } from "d3-dsv";
-import { url } from "../mainValues";
 
 export async function loadPacketSizeFrequency(
+  url: string,
   maxPackets = 10000,
   binSize = 64 // bucket size em bytes
 ): Promise<Array<{ size: number; frequency: number }>> {

@@ -1,7 +1,10 @@
 import { csvParse } from "d3-dsv";
-import { url, maxPackets, minPackets } from "../mainValues";
 
-export async function loadAvgPacketSizeByIP(): Promise<Array<{ ip: string; size: number }>> {
+export async function loadAvgPacketSizeByIP(
+  url: string,
+  maxPackets = 10000,
+  minPackets = 1
+): Promise<Array<{ ip: string; size: number }>> {
   /**
    * Calcula o tamanho médio dos pacotes enviados por IP de origem.
    * Processa no máximo `maxPackets` registros para evitar sobrecarga.

@@ -1,21 +1,25 @@
-import { useEffect, useState } from "react";
-import { BarChart } from "@mui/x-charts";
-import { loadAvgPacketSizeByIP } from "./loadAvgPacketSizeChart";
-import ChartLoad from "../../ChartLoad";
+'use client'
+
+import { useEffect, useState } from "react"
+import { BarChart } from "@mui/x-charts"
+import { loadAvgPacketSizeByIP } from "./loadAvgPacketSizeChart"
+import ChartLoad from "../../ChartLoad"
+import { useMainValues } from "@/app/contexts/MainValuesContext"
 
 const AvgPacketSizeChart = () => {
-  const [data, setData] = useState<{ ip: string; size: number }[]>([]);
-  const [loading, setLoading] = useState(true);
+  const [data, setData] = useState<{ ip: string; size: number }[]>([])
+  const [loading, setLoading] = useState(true)
+  const { values } = useMainValues()
 
   useEffect(() => {
-    setLoading(true);
-    loadAvgPacketSizeByIP()
+    setLoading(true)
+    loadAvgPacketSizeByIP(values.url, values.maxPackets, values.minPackets)
       .then(setData)
-      .finally(() => setLoading(false));
-  }, []);
+      .finally(() => setLoading(false))
+  }, [values.url, values.maxPackets, values.minPackets])
 
   if (loading) {
-    return <ChartLoad />;
+    return <ChartLoad />
   }
 
   return (
@@ -25,7 +29,7 @@ const AvgPacketSizeChart = () => {
       series={[{ dataKey: "size", label: "Tamanho médio (bytes)" }]}
       height={300}
     />
-  );
-};
+  )
+}
 
-export default AvgPacketSizeChart;
+export default AvgPacketSizeChart

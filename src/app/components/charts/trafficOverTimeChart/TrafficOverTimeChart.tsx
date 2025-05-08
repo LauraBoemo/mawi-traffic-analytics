@@ -1,20 +1,24 @@
-import { useEffect, useState } from "react";
-import { LineChart } from "@mui/x-charts";
-import { loadTrafficOverTime } from "./loadTrafficOverTimeChart";
-import ChartLoad from "../../ChartLoad";
+'use client'
+
+import { useEffect, useState } from "react"
+import { LineChart } from "@mui/x-charts"
+import { loadTrafficOverTime } from "./loadTrafficOverTimeChart"
+import ChartLoad from "../../ChartLoad"
+import { useMainValues } from "@/app/contexts/MainValuesContext"
 
 const TrafficOverTimeChart = () => {
-  const [data, setData] = useState<{ time: number; bytes: number }[]>([]);
-  const [loading, setLoading] = useState(true);
+  const [data, setData] = useState<{ time: number; bytes: number }[]>([])
+  const [loading, setLoading] = useState(true)
+  const { values } = useMainValues()
 
   useEffect(() => {
-    setLoading(true);
-    loadTrafficOverTime()
+    setLoading(true)
+    loadTrafficOverTime(values.url, values.binSize, values.maxPackets)
       .then(setData)
-      .finally(() => setLoading(false));
-  }, []);
+      .finally(() => setLoading(false))
+  }, [values.url, values.binSize, values.maxPackets])
 
-  if (loading) return <ChartLoad />;
+  if (loading) return <ChartLoad />
 
   return (
     <LineChart
@@ -23,7 +27,7 @@ const TrafficOverTimeChart = () => {
       series={[{ dataKey: "bytes", label: "Bytes Transmitidos" }]}
       height={250}
     />
-  );
-};
+  )
+}
 
-export default TrafficOverTimeChart;
+export default TrafficOverTimeChart

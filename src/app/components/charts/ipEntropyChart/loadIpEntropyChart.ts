@@ -1,7 +1,7 @@
 import { csvParse } from "d3-dsv";
-import { url } from "../mainValues";
 
 export async function loadIPEntropyByWindow(
+  url: string,
   binSize = 10, // segundos
   maxPackets = 10000
 ): Promise<Array<{ window: string; entropy: number }>> {

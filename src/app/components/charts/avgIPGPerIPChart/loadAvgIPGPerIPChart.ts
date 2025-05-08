@@ -1,8 +1,9 @@
 import { csvParse } from "d3-dsv";
-import { url, maxIPG } from "../mainValues";
 
 export async function loadAvgIPGPerIP(
-  maxPackets = 10000
+  url: string,
+  maxIPG: number,
+  maxPackets = 100000
 ): Promise<Array<{ ip: string; avg: number; std: number }>> {
   /**
    * Calcula o IPG médio (Inter-Packet Gap) e o desvio padrão por IP de origem.
@@ -11,7 +12,7 @@ export async function loadAvgIPGPerIP(
    * podendo revelar padrões de uso ou comportamentos anômalos.
    * 
    * @param maxPackets - Limite de pacotes a processar do CSV.
-   * @returns Array com os 10 IPs que possuem os maiores IPGs médios,
+   * @returns Array com os 100 IPs que possuem os maiores IPGs médios,
    *          incluindo o desvio padrão de cada um.
   */
   try {
@@ -56,7 +57,7 @@ export async function loadAvgIPGPerIP(
       // Calcula os gaps entre pacotes consecutivos
       for (let i = 1; i < sorted.length; i++) {
         let gap = sorted[i] - sorted[i - 1];
-        if (gap > 1e10) gap /= 1_000_000; // Corrige microssegundos se necessário
+        if (gap > 1e100) gap /= 1_000_000; // Corrige microssegundos se necessário
         if (gap >= 0 && gap <= maxIPG) ipgs.push(gap);
       }
 
@@ -75,8 +76,8 @@ export async function loadAvgIPGPerIP(
       });
     }
 
-    // Retorna os 10 IPs com maior IPG médio
-    return result.sort((a, b) => b.avg - a.avg).slice(0, 10);
+    // Retorna os 100 IPs com maior IPG médio
+    return result.sort((a, b) => b.avg - a.avg).slice(0, 100);
   } catch (error) {
     console.error("Erro ao calcular IPG por IP:", error);
     return [];

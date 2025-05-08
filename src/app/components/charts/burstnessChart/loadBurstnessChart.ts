@@ -1,8 +1,9 @@
 import { csvParse } from "d3-dsv";
-import { url, maxPoints } from "../mainValues";
 
 export async function loadBurstnessData(
-  binSize = 1 // segundos por janela
+  url: string,
+  binSize = 1,
+  maxPoints = 10000
 ): Promise<Array<{ time: number; packets: number }>> {
   /**
    * Gera a distribuição de pacotes por janelas de tempo (burstness),

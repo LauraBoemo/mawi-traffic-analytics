@@ -1,21 +1,25 @@
-import { useEffect, useState } from "react";
-import { BarChart } from "@mui/x-charts";
-import { loadIPGStats } from "./loadStatsChart";
-import ChartLoad from "../../ChartLoad";
+'use client'
+
+import { useEffect, useState } from "react"
+import { BarChart } from "@mui/x-charts"
+import { loadIPGStats } from "./loadStatsChart"
+import ChartLoad from "../../ChartLoad"
+import { useMainValues } from "@/app/contexts/MainValuesContext"
 
 const StatsChart = () => {
-  const [data, setData] = useState<{ metric: string; value: number }[]>([]);
-  const [loading, setLoading] = useState(true);
+  const [data, setData] = useState<{ metric: string; value: number }[]>([])
+  const [loading, setLoading] = useState(true)
+  const { values } = useMainValues()
 
   useEffect(() => {
-    setLoading(true);
-    loadIPGStats()
+    setLoading(true)
+    loadIPGStats(values.url, values.maxIPG)
       .then(setData)
-      .finally(() => setLoading(false));
-  }, []);
+      .finally(() => setLoading(false))
+  }, [values.url, values.maxIPG])
 
   if (loading) {
-    return <ChartLoad />;
+    return <ChartLoad />
   }
 
   return (
@@ -25,7 +29,7 @@ const StatsChart = () => {
       series={[{ dataKey: "value", label: "Valor" }]}
       height={300}
     />
-  );
-};
+  )
+}
 
-export default StatsChart;
+export default StatsChart

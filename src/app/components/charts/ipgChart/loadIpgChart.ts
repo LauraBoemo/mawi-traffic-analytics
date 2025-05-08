@@ -1,7 +1,10 @@
 import { csvParse } from "d3-dsv";
-import { maxIPG, maxPoints, url } from "../mainValues";
 
-export async function loadAndProcessIPGData(): Promise<Array<{ x: number; y: number }>> {
+export async function loadAndProcessIPGData(
+  url: string,
+  maxIPG: number,
+  maxPoints = 10000
+): Promise<Array<{ x: number; y: number }>> {
   /**
    * Carrega e processa dados de timestamp para gerar IPG (Inter-Packet Gap).
    * O IPG representa o intervalo de tempo entre dois pacotes consecutivos.

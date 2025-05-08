@@ -1,7 +1,9 @@
 import { csvParse } from "d3-dsv";
-import { url, maxIPG } from "../mainValues";
 
-export async function loadIPGStats(): Promise<Array<{ metric: string; value: number }>> {
+export async function loadIPGStats(
+  url: string,
+  maxIPG: number
+): Promise<Array<{ metric: string; value: number }>> {
   /**
    * Calcula as métricas estatísticas Skewness (assimetria) e Kurtosis (achatamento)
    * da distribuição dos IPGs (Inter-Packet Gaps).

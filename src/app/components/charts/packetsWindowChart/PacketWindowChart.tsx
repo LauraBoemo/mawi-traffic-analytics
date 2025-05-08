@@ -1,21 +1,25 @@
-import { useEffect, useState } from "react";
-import { BarChart } from "@mui/x-charts";
-import { loadPacketsPerWindow } from "./loadPacketsWindowChart";
-import ChartLoad from "../../ChartLoad";
+'use client'
+
+import { useEffect, useState } from "react"
+import { BarChart } from "@mui/x-charts"
+import { loadPacketsPerWindow } from "./loadPacketsWindowChart"
+import ChartLoad from "../../ChartLoad"
+import { useMainValues } from "@/app/contexts/MainValuesContext"
 
 const PacketsWindowChart = () => {
-  const [data, setData] = useState<{ window: string; count: number }[]>([]);
-  const [loading, setLoading] = useState(true);
+  const [data, setData] = useState<{ window: string; count: number }[]>([])
+  const [loading, setLoading] = useState(true)
+  const { values } = useMainValues()
 
   useEffect(() => {
-    setLoading(true);
-    loadPacketsPerWindow(10)
+    setLoading(true)
+    loadPacketsPerWindow(values.url, values.binSize, values.maxPoints)
       .then(setData)
-      .finally(() => setLoading(false));
-  }, []);
+      .finally(() => setLoading(false))
+  }, [values.url, values.binSize, values.maxPoints])
 
   if (loading) {
-    return <ChartLoad />;
+    return <ChartLoad />
   }
 
   return (
@@ -25,7 +29,7 @@ const PacketsWindowChart = () => {
       series={[{ dataKey: "count", label: "Pacotes" }]}
       height={300}
     />
-  );
-};
+  )
+}
 
-export default PacketsWindowChart;
+export default PacketsWindowChart
