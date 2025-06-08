@@ -4,11 +4,79 @@ import { Box, Divider, Drawer, List, ListItemButton, ListItemText } from '@mui/m
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 
-const navItems = [
-  { label: 'Descrição', path: '/descricoes' },
-  { label: 'Dados Não-Triviais', path: '/nao-triviais' },
-  { label: 'Métricas', path: '/metricas' },
+const trab1NavItems = [
+  { label: 'Descrição', path: '/t1-descricoes' },
+  { label: 'Dados Não-Triviais', path: '/t1-nao-triviais' },
+  { label: 'Métricas', path: '/t1-metricas' },
 ]
+
+const trab2NavItems = [
+  { label: 'Descrição', path: '/t2-descricoes' },
+  { label: 'Métricas', path: '/t2-metricas' },
+  { label: 'Gráficos', path: '/t2-graficos' },
+]
+
+const Header = () => {
+  return (
+    <header>
+      <h1>
+        Mawi Traffic Analytics
+      </h1>
+    </header>
+  )
+}
+
+const Footer = () => {
+  return (
+    <Box display="flex" flexDirection="column" gap="20px">
+      <Divider />
+      <footer>
+        <h6>
+          Davi, Giovana, João & Laura
+        </h6>
+        <h6 style={{ fontWeight: 500 }}>
+          Redes de Computadores
+        </h6>
+        <h6 style={{ fontWeight: 200 }}>
+          UFSM, 2025/01
+        </h6>
+      </footer>
+    </Box>
+  )
+}
+
+const RouteLink = ({ path, label, pathname }: { path: string; label: string; pathname: string }) => {
+  return (
+    <Link key={path} href={path} passHref>
+      <ListItemButton selected={pathname === path}>
+        <ListItemText
+          primary={label}
+          primaryTypographyProps={{
+            sx: {
+              fontSize: '14px',
+              fontFamily: 'var(--font-geist-mono)',
+            },
+          }}
+        />
+      </ListItemButton>
+    </Link>
+  )
+}
+
+const Section = ({ title, navItems, pathname }: { title: string, navItems: any, pathname: string }) => {
+  return (
+    <Box>
+      <h6>
+        {title}
+      </h6>
+      <List>
+        {navItems.map(({ label, path }: any) => (
+          <RouteLink key={path} label={label} path={path} pathname={pathname} />
+        ))}
+      </List>
+    </Box>
+  )
+}
 
 export default function Sidebar() {
   const pathname = usePathname()
@@ -31,44 +99,13 @@ export default function Sidebar() {
       }}
     >
       <Box display="flex" flexDirection="column" gap="20px">
-        <header>
-          <h1>
-            Mawi Traffic Analytics
-          </h1>
-        </header>
+        <Header />
         <Divider />
-        <List>
-          {navItems.map(({ label, path }) => (
-            <Link key={path} href={path} passHref>
-              <ListItemButton selected={pathname === path}>
-                <ListItemText
-                  primary={label}
-                  primaryTypographyProps={{
-                    sx: {
-                      fontSize: '14px',
-                      fontFamily: 'var(--font-geist-mono)',
-                    },
-                  }}
-                />
-              </ListItemButton>
-            </Link>
-          ))}
-        </List>
-      </Box>
-      <Box display="flex" flexDirection="column" gap="20px">
+        <Section title='Trabalho 01' navItems={trab1NavItems} pathname={pathname} />
         <Divider />
-        <footer>
-          <h6>
-            Davi, Giovana, João & Laura
-          </h6>
-          <h6 style={{ fontWeight: 500 }}>
-            Redes de Computadores
-          </h6>
-          <h6 style={{ fontWeight: 200 }}>
-            UFSM, 2025/01
-          </h6>
-        </footer>
+        <Section title='Trabalho 02' navItems={trab2NavItems} pathname={pathname} />
       </Box>
+      <Footer />
     </Drawer>
   )
 }

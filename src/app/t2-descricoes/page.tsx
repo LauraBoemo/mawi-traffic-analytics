@@ -1,5 +1,5 @@
-import styles from "./page.module.css";
-import Descriptions from "./t1-descricoes/Descriptions";
+import styles from "../page.module.css";
+import Descriptions from "./Descriptions";
 
 export default function DescricoesGerais() {
   return (

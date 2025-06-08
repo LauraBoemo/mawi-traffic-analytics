@@ -5,6 +5,8 @@ import React, { createContext, useContext, useState } from 'react'
 
 export interface MainValues {
   url: string
+  url_stats_metricas: string
+  url_stats_completo: string
   maxPackets: number
   maxIPG: number
   binSize: number
@@ -16,6 +18,8 @@ export interface MainValues {
 
 const defaultValues: MainValues = {
   url: "https://raw.githubusercontent.com/DaviCMachado/T1_Redes/main/data.csv",
+  url_stats_metricas: "https://raw.githubusercontent.com/DaviCMachado/T2_Redes/refs/heads/main/stats_metricas.json",
+  url_stats_completo: "https://raw.githubusercontent.com/DaviCMachado/T2_Redes/refs/heads/main/stats_completo.json",
   maxPackets: 10000,
   maxIPG: 5,
   binSize: 1,
