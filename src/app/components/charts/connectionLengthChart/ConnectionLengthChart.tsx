@@ -13,10 +13,10 @@ const ConnectionLengthChart = () => {
 
   useEffect(() => {
     setLoading(true)
-    loadConnectionLengthComparison(values.url_stats_metricas)
+    loadConnectionLengthComparison(values.url_stats_metricas, values.maxEntries)
       .then(setData)
       .finally(() => setLoading(false))
-  }, [values.url_stats_metricas])
+  }, [values.url_stats_metricas, values.maxEntries])
 
   if (loading) return <ChartLoad />
 

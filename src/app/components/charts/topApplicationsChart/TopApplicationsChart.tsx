@@ -13,10 +13,10 @@ const TopApplicationsChart = () => {
 
   useEffect(() => {
     setLoading(true)
-    loadTopApplications(values.url_stats_metricas)
+    loadTopApplications(values.url_stats_metricas, values.maxEntries)
       .then(setData)
       .finally(() => setLoading(false))
-  }, [values.url_stats_metricas])
+  }, [values.url_stats_metricas, values.maxEntries])
 
   if (loading) return <ChartLoad />
 

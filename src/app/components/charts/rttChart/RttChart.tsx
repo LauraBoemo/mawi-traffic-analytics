@@ -13,10 +13,10 @@ const RttChart = () => {
 
   useEffect(() => {
     setLoading(true)
-    loadRttPerConnection(values.url_stats_metricas)
+    loadRttPerConnection(values.url_stats_metricas, values.maxEntries)
       .then(setData)
       .finally(() => setLoading(false))
-  }, [values.url_stats_metricas])
+  }, [values.url_stats_metricas, values.maxEntries])
 
   if (loading) return <ChartLoad />
 

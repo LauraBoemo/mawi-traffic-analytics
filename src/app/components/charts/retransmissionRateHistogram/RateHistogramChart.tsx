@@ -13,10 +13,10 @@ const RateHistogramChart = () => {
 
   useEffect(() => {
     setLoading(true)
-    loadRetransmissionRateHistogram(values.url_stats_metricas)
+    loadRetransmissionRateHistogram(values.url_stats_metricas, values.maxEntries)
       .then(setData)
       .finally(() => setLoading(false))
-  }, [values.url_stats_metricas])
+  }, [values.url_stats_metricas, values.maxEntries])
 
   if (loading) return <ChartLoad />
 

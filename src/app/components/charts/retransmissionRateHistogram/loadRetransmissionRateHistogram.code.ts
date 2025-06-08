@@ -1,5 +1,8 @@
 export const code = `
-export async function loadRetransmissionRateHistogram(url: string): Promise<Array<{ bin: string; count: number }>> {
+export async function loadRetransmissionRateHistogram(
+  url: string,
+  maxEntries = 10000
+): Promise<Array<{ bin: string; count: number }>> {
   try {
     const res = await fetch(url, { cache: 'no-store' })
     if (!res.ok) throw new Error('Erro ao carregar o JSON')
@@ -16,11 +19,13 @@ export async function loadRetransmissionRateHistogram(url: string): Promise<Arra
       const idx = Math.min(bins - 1, Math.floor((v - min) / width))
       counts[idx]++
     })
-    return counts.map((count, i) => {
-      const start = (min + i * width).toFixed(2)
-      const end = (min + (i + 1) * width).toFixed(2)
-      return { bin: $start-$end, count }
-    })
+    return counts
+      .slice(0, maxEntries)
+      .map((count, i) => {
+        const start = (min + i * width).toFixed(2)
+        const end = (min + (i + 1) * width).toFixed(2)
+        return { bin: `${start}-${end}`, count }
+      })
   } catch (e) {
     console.error('Erro ao carregar taxas de retransmissao:', e)
     return []

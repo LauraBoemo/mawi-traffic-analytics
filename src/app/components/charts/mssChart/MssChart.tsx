@@ -13,10 +13,10 @@ const MssChart = () => {
 
   useEffect(() => {
     setLoading(true)
-    loadMssPerConnection(values.url_stats_completo)
+    loadMssPerConnection(values.url_stats_completo, values.maxEntries)
       .then(setData)
       .finally(() => setLoading(false))
-  }, [values.url_stats_completo])
+  }, [values.url_stats_completo, values.maxEntries])
 
   if (loading) return <ChartLoad />
 

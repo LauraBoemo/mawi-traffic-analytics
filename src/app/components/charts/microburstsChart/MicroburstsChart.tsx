@@ -13,10 +13,10 @@ const MicroburstsChart = () => {
 
   useEffect(() => {
     setLoading(true)
-    loadMicrobursts(values.url_stats_metricas)
+    loadMicrobursts(values.url_stats_metricas, values.maxEntries)
       .then(setData)
       .finally(() => setLoading(false))
-  }, [values.url_stats_metricas])
+  }, [values.url_stats_metricas, values.maxEntries])
 
   if (loading) return <ChartLoad />
 
