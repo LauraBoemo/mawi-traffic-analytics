@@ -6,9 +6,13 @@ export async function loadConnectionLengthComparison(url: string, threshold = 10
     const map: Record<string, number> = data.duracao_conexoes || {}
     let short = 0
     let long = 0
-    Object.values(map).forEach(v => {
-      Number(v) <= threshold ? short++ : long++
-    })
+  Object.values(map).forEach(v => {
+    if (Number(v) <= threshold) {
+      short++
+    } else {
+      long++
+    }
+  })
     return [
       { type: 'Curtas', count: short },
       { type: 'Longas', count: long }
