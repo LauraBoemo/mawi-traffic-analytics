@@ -7,7 +7,11 @@ export async function loadConnectionLengthComparison(url: string, threshold = 10
     let short = 0
     let long = 0
     Object.values(map).forEach(v => {
-      Number(v) <= threshold ? short++ : long++
+      if (Number(v) <= threshold) {
+        short++
+      } else {
+        long++
+      }
     })
     return [
       { type: 'Curtas', count: short },

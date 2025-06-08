@@ -19,7 +19,7 @@ export async function loadRetransmissionRateHistogram(url: string): Promise<Arra
     return counts.map((count, i) => {
       const start = (min + i * width).toFixed(2)
       const end = (min + (i + 1) * width).toFixed(2)
-      return { bin: `${start}-${end}`, count }
+      return { bin: \`\${start}-\${end}\`, count }
     })
   } catch (e) {
     console.error('Erro ao carregar taxas de retransmissao:', e)
