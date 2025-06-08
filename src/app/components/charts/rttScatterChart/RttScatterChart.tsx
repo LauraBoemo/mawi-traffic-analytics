@@ -23,6 +23,7 @@ const RttScatterChart = () => {
   return (
     <ScatterChart
       dataset={data}
+      series={[{ type: 'scatter' }]}
       xAxis={[{ dataKey: 'idx', label: 'Conexão' }]}
       yAxis={[{ dataKey: 'rtt', label: 'RTT (s)' }]}
       height={250}
