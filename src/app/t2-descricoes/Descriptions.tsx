@@ -42,6 +42,15 @@ export default function DescricoesGerais() {
               onChange={handleChange('url_stats_completo')}
               fullWidth
             />
+            <TextField
+              label="maxEntries"
+              type="number"
+              value={values.maxEntries}
+              onChange={handleChange('maxEntries')}
+            />
+            <h6 style={{ marginTop: 0, fontWeight: 400 }}>
+              Limite máximo de registros a serem carregados por gráfico.
+            </h6>
           </Stack>
         </ChartAccordion>
       </ChartBox>

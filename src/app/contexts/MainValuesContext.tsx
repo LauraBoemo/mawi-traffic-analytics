@@ -14,6 +14,7 @@ export interface MainValues {
   maxIPGPoints: number
   maxIPGValue: number
   maxPoints: number
+  maxEntries: number
 }
 
 const defaultValues: MainValues = {
@@ -27,6 +28,7 @@ const defaultValues: MainValues = {
   maxIPGPoints: 10000,
   maxIPGValue: 5,
   maxPoints: 10000,
+  maxEntries: 10000,
 }
 
 const MainValuesContext = createContext<{

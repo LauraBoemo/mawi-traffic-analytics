@@ -1,4 +1,7 @@
-export async function loadRttScatter(url: string): Promise<Array<{ idx: number; rtt: number }>> {
+export async function loadRttScatter(
+  url: string,
+  maxEntries = 10000
+): Promise<Array<{ idx: number; rtt: number }>> {
   try {
     const res = await fetch(url, { cache: 'no-store' })
     if (!res.ok) throw new Error('Erro ao carregar o JSON')
@@ -7,7 +10,9 @@ export async function loadRttScatter(url: string): Promise<Array<{ idx: number; 
     const values = Array.isArray(map)
       ? map.map(([, r]: [string, number]) => Number(r))
       : Object.values(map).map(Number)
-    return values.map((rtt, i) => ({ idx: i + 1, rtt }))
+    return values
+      .slice(0, maxEntries)
+      .map((rtt, i) => ({ idx: i + 1, rtt }))
   } catch (e) {
     console.error('Erro ao carregar RTT scatter:', e)
     return []

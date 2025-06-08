@@ -13,10 +13,10 @@ const ElephantFlowsChart = () => {
 
   useEffect(() => {
     setLoading(true)
-    loadElephantFlows(values.url_stats_metricas)
+    loadElephantFlows(values.url_stats_metricas, values.maxEntries)
       .then(setData)
       .finally(() => setLoading(false))
-  }, [values.url_stats_metricas])
+  }, [values.url_stats_metricas, values.maxEntries])
 
   if (loading) return <ChartLoad />
 

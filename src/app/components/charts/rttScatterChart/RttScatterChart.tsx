@@ -13,10 +13,10 @@ const RttScatterChart = () => {
 
   useEffect(() => {
     setLoading(true)
-    loadRttScatter(values.url_stats_metricas)
+    loadRttScatter(values.url_stats_metricas, values.maxEntries)
       .then(setData)
       .finally(() => setLoading(false))
-  }, [values.url_stats_metricas])
+  }, [values.url_stats_metricas, values.maxEntries])
 
   if (loading) return <ChartLoad />
 

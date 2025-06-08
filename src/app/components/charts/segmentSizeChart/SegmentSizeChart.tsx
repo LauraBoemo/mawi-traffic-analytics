@@ -13,10 +13,10 @@ const SegmentSizeChart = () => {
 
   useEffect(() => {
     setLoading(true)
-    loadSegmentSizeDistribution(values.url_stats_completo)
+    loadSegmentSizeDistribution(values.url_stats_completo, values.maxEntries)
       .then(setData)
       .finally(() => setLoading(false))
-  }, [values.url_stats_completo])
+  }, [values.url_stats_completo, values.maxEntries])
 
   if (loading) return <ChartLoad />
 
