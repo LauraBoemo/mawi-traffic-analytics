@@ -28,7 +28,10 @@ export const NonTrivialCharts = () => {
 
   return (
     <ChartContainer>
-      <ChartBox title="Janela de Congestionamento">
+      <ChartBox
+        title="Janela de Congestionamento"
+        description="Apresenta a evolução da janela de congestionamento ao longo do tempo, refletindo o controle de fluxo TCP."
+      >
         <ChartAccordion title="Ver Código" expanded={!!expanded['code-cwnd']} onChange={handleChange('code-cwnd')}>
           <ChartFunctionDescription>{loadCongestionWindowCode.toString()}</ChartFunctionDescription>
         </ChartAccordion>
@@ -37,7 +40,10 @@ export const NonTrivialCharts = () => {
         </ChartAccordion>
       </ChartBox>
 
-      <ChartBox title="RTT por Conexão (Dispersion)">
+      <ChartBox
+        title="RTT por Conexão (Dispersion)"
+        description="Mostra a dispersão do RTT estimado para cada conexão, destacando variações de latência."
+      >
         <ChartAccordion title="Ver Código" expanded={!!expanded['code-rtt']} onChange={handleChange('code-rtt')}>
           <ChartFunctionDescription>{loadRttScatterCode.toString()}</ChartFunctionDescription>
         </ChartAccordion>
@@ -46,7 +52,10 @@ export const NonTrivialCharts = () => {
         </ChartAccordion>
       </ChartBox>
 
-      <ChartBox title="CDF do Tempo de Estabelecimento">
+      <ChartBox
+        title="CDF do Tempo de Estabelecimento"
+        description="Exibe a função de distribuição acumulada do tempo de handshake das conexões."
+      >
         <ChartAccordion title="Ver Código" expanded={!!expanded['code-handshake']} onChange={handleChange('code-handshake')}>
           <ChartFunctionDescription>{loadHandshakeCdfCode.toString()}</ChartFunctionDescription>
         </ChartAccordion>
@@ -55,7 +64,10 @@ export const NonTrivialCharts = () => {
         </ChartAccordion>
       </ChartBox>
 
-      <ChartBox title="Histograma da Taxa de Retransmissões">
+      <ChartBox
+        title="Histograma da Taxa de Retransmissões"
+        description="Distribuição das taxas de retransmissões observadas nas conexões."
+      >
         <ChartAccordion title="Ver Código" expanded={!!expanded['code-retrans']} onChange={handleChange('code-retrans')}>
           <ChartFunctionDescription>{loadRetransmissionRateCode.toString()}</ChartFunctionDescription>
         </ChartAccordion>
@@ -64,7 +76,10 @@ export const NonTrivialCharts = () => {
         </ChartAccordion>
       </ChartBox>
 
-      <ChartBox title="Conexões Curtas vs Longas">
+      <ChartBox
+        title="Conexões Curtas vs Longas"
+        description="Compara a quantidade de conexões de curta e longa duração no tráfego analisado."
+      >
         <ChartAccordion title="Ver Código" expanded={!!expanded['code-length']} onChange={handleChange('code-length')}>
           <ChartFunctionDescription>{loadConnectionLengthCode.toString()}</ChartFunctionDescription>
         </ChartAccordion>

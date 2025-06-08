@@ -40,7 +40,10 @@ export const AdvancedCharts = () => {
 
   return (
     <ChartContainer>
-      <ChartBox title="Duração das Conexões">
+      <ChartBox
+        title="Duração das Conexões"
+        description="Histograma da duração das sessões TCP, identificando conexões curtas e longas."
+      >
         <ChartAccordion title="Ver Código" expanded={!!expanded['code-duracao']} onChange={handleChange('code-duracao')}>
           <ChartFunctionDescription>{loadConnectionDurationCode.toString()}</ChartFunctionDescription>
         </ChartAccordion>
@@ -49,7 +52,10 @@ export const AdvancedCharts = () => {
         </ChartAccordion>
       </ChartBox>
 
-      <ChartBox title="RTT Estimado por Conexão">
+      <ChartBox
+        title="RTT Estimado por Conexão"
+        description="Apresenta o tempo de ida e volta calculado para cada conexão."
+      >
         <ChartAccordion title="Ver Código" expanded={!!expanded['code-rtt']} onChange={handleChange('code-rtt')}>
           <ChartFunctionDescription>{loadRttCode.toString()}</ChartFunctionDescription>
         </ChartAccordion>
@@ -58,7 +64,10 @@ export const AdvancedCharts = () => {
         </ChartAccordion>
       </ChartBox>
 
-      <ChartBox title="Número de Retransmissões por IP">
+      <ChartBox
+        title="Número de Retransmissões por IP"
+        description="Conta quantas retransmissões foram observadas para cada endereço IP."
+      >
         <ChartAccordion title="Ver Código" expanded={!!expanded['code-retrans']} onChange={handleChange('code-retrans')}>
           <ChartFunctionDescription>{loadRetransmissionsCode.toString()}</ChartFunctionDescription>
         </ChartAccordion>
@@ -67,7 +76,10 @@ export const AdvancedCharts = () => {
         </ChartAccordion>
       </ChartBox>
 
-      <ChartBox title="Throughput Médio por Conexão">
+      <ChartBox
+        title="Throughput Médio por Conexão"
+        description="Mede a taxa média de transferência de dados em cada conexão."
+      >
         <ChartAccordion title="Ver Código" expanded={!!expanded['code-throughput']} onChange={handleChange('code-throughput')}>
           <ChartFunctionDescription>{loadThroughputCode.toString()}</ChartFunctionDescription>
         </ChartAccordion>
@@ -76,7 +88,10 @@ export const AdvancedCharts = () => {
         </ChartAccordion>
       </ChartBox>
 
-      <ChartBox title="Evolução da Janela de Congestionamento">
+      <ChartBox
+        title="Evolução da Janela de Congestionamento"
+        description="Acompanha como o algoritmo TCP ajusta a janela de congestionamento."
+      >
         <ChartAccordion title="Ver Código" expanded={!!expanded['code-cwnd']} onChange={handleChange('code-cwnd')}>
           <ChartFunctionDescription>{loadCongestionWindowCode.toString()}</ChartFunctionDescription>
         </ChartAccordion>
@@ -85,7 +100,10 @@ export const AdvancedCharts = () => {
         </ChartAccordion>
       </ChartBox>
 
-      <ChartBox title="Tempo de Handshake">
+      <ChartBox
+        title="Tempo de Handshake"
+        description="Mostra quanto tempo cada conexão levou para estabelecer o handshake inicial."
+      >
         <ChartAccordion title="Ver Código" expanded={!!expanded['code-handshake']} onChange={handleChange('code-handshake')}>
           <ChartFunctionDescription>{loadHandshakeTimeCode.toString()}</ChartFunctionDescription>
         </ChartAccordion>
@@ -94,7 +112,10 @@ export const AdvancedCharts = () => {
         </ChartAccordion>
       </ChartBox>
 
-      <ChartBox title="Distribuição dos Tamanhos dos Segmentos">
+      <ChartBox
+        title="Distribuição dos Tamanhos dos Segmentos"
+        description="Apresenta a frequência de tamanhos de segmentos TCP observados."
+      >
         <ChartAccordion title="Ver Código" expanded={!!expanded['code-segments']} onChange={handleChange('code-segments')}>
           <ChartFunctionDescription>{loadSegmentSizeCode.toString()}</ChartFunctionDescription>
         </ChartAccordion>
@@ -103,7 +124,10 @@ export const AdvancedCharts = () => {
         </ChartAccordion>
       </ChartBox>
 
-      <ChartBox title="MSS por Conexão">
+      <ChartBox
+        title="MSS por Conexão"
+        description="Exibe o Maximum Segment Size negociado em cada conexão."
+      >
         <ChartAccordion title="Ver Código" expanded={!!expanded['code-mss']} onChange={handleChange('code-mss')}>
           <ChartFunctionDescription>{loadMssCode.toString()}</ChartFunctionDescription>
         </ChartAccordion>
@@ -112,7 +136,10 @@ export const AdvancedCharts = () => {
         </ChartAccordion>
       </ChartBox>
 
-      <ChartBox title="Fluxos Elefantes">
+      <ChartBox
+        title="Fluxos Elefantes"
+        description="Identifica conexões que transferiram grandes volumes de dados."
+      >
         <ChartAccordion title="Ver Código" expanded={!!expanded['code-elephants']} onChange={handleChange('code-elephants')}>
           <ChartFunctionDescription>{loadElephantFlowsCode.toString()}</ChartFunctionDescription>
         </ChartAccordion>
@@ -121,7 +148,10 @@ export const AdvancedCharts = () => {
         </ChartAccordion>
       </ChartBox>
 
-      <ChartBox title="Microbursts">
+      <ChartBox
+        title="Microbursts"
+        description="Detecta rajadas muito curtas de tráfego que podem causar congestionamento."
+      >
         <ChartAccordion title="Ver Código" expanded={!!expanded['code-micro']} onChange={handleChange('code-micro')}>
           <ChartFunctionDescription>{loadMicroburstsCode.toString()}</ChartFunctionDescription>
         </ChartAccordion>
@@ -130,7 +160,10 @@ export const AdvancedCharts = () => {
         </ChartAccordion>
       </ChartBox>
 
-      <ChartBox title="Top Aplicações por Porta">
+      <ChartBox
+        title="Top Aplicações por Porta"
+        description="Lista as portas de destino mais utilizadas e suas aplicações associadas."
+      >
         <ChartAccordion title="Ver Código" expanded={!!expanded['code-apps']} onChange={handleChange('code-apps')}>
           <ChartFunctionDescription>{loadTopApplicationsCode.toString()}</ChartFunctionDescription>
         </ChartAccordion>
