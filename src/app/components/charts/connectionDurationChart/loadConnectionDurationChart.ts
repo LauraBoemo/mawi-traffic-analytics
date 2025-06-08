@@ -1,5 +1,3 @@
-import { MainValues } from "@/app/contexts/MainValuesContext"
-
 export async function loadConnectionDurations(url: string): Promise<Array<{ id: string; duration: number }>> {
   try {
     const response = await fetch(url, { cache: "no-store" })

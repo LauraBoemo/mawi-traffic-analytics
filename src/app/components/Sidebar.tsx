@@ -63,14 +63,16 @@ const RouteLink = ({ path, label, pathname }: { path: string; label: string; pat
   )
 }
 
-const Section = ({ title, navItems, pathname }: { title: string, navItems: any, pathname: string }) => {
+type NavItem = { label: string; path: string };
+
+const Section = ({ title, navItems, pathname }: { title: string; navItems: NavItem[]; pathname: string }) => {
   return (
     <Box>
       <h6>
         {title}
       </h6>
       <List>
-        {navItems.map(({ label, path }: any) => (
+        {navItems.map(({ label, path }: NavItem) => (
           <RouteLink key={path} label={label} path={path} pathname={pathname} />
         ))}
       </List>
